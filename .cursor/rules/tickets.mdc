@@ -1,0 +1,22 @@
+---
+description: Ticket quality rules for all assignable people; one standard for contractors and FTEs
+alwaysApply: true
+---
+
+# Tickets
+
+One ticket standard. Do not use a separate contractor format, skill, or template.
+
+Every ticket opens with: **As a** [role], **I need** [something] **so that** [result]
+
+Required fields: User Story, Background, Scope, Inputs, Outputs / Deliverables, Acceptance Criteria, Definition of Done, Dependencies, Estimated Effort, Assignee.
+
+Flag before assignment:
+
+- Missing or malformed user story
+- Fewer than two testable acceptance criteria
+- No roadmap initiative on the named program
+- Unresolved dependencies
+- Multi-sprint scope without subtasks
+
+Full definitions: `templates/ticket.md` and `docs/operating-model.md`.
