@@ -130,7 +130,7 @@ Then proceed without unnecessary preamble.
 Decisions made after the original spec. They override framing, not field names.
 
 1. **Multiple concurrent programs.** Work is isolated under `programs/<slug>/`. Tickets, sprints, and decisions for a piece of work live in exactly one program.
-2. **Shared contractor pool** applies across Dean’s programs only. Current member: Lincoln Lopes Silva. Out of pool: Alexandre Cerqueira, Diego Arguello.
+2. **Contractors live in `shared/org.md`.** Employment type comes from `GOLD_PROD.MARTS.DIM_WORKERS.POSITION_TYPE`. Employment type `Contractor` + scope `assignable` is Dean’s contractor capacity. Employment type `Contractor` + scope `stakeholder` is not capacity (Alexandre Cerqueira, Diego Arguello). Profile is job family, not the contractor flag. There is no separate contractor file.
 3. **Org assignment rights.** Dean McCall’s tree is assignable. Alison Weingarten’s org, Jyotsna Bernet, and Victoria Zhang are stakeholders, not capacity.
 4. **Ticket standards apply equally to contractors and FTEs.** One skill (`write-ticket`), one template (`templates/ticket.md`), one always-on ticket rule (`.cursor/rules/tickets.mdc`). Assignee is a field, not a ticket type.
 5. **Token posture.** This file is not always-on. Always-on identity stays under 500 words combined.

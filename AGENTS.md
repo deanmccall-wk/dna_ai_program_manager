@@ -14,7 +14,7 @@ Before long artifacts, ask:
 
 - `docs/operating-model.md`
 - `shared/org.md`
-- `shared/contractors.md`
+- `shared/roadmap-source.md`
 - `programs/_index.md`
 
 ## Behavior

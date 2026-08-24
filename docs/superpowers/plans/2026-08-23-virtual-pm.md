@@ -1,5 +1,7 @@
 # Virtual Program Manager Implementation Plan
 
+> **Roster (2026-08-23):** `shared/org.md` is the complete team. Do not create or keep `shared/contractors.md`. Historical steps below that mention that file are superseded.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Turn this empty repo into a Cursor-native Virtual Program Manager for Dean McCall: always-on PM identity, one ticket standard for contractors and FTEs, multi-program files, and a shared contractor pool limited to Dean’s org.

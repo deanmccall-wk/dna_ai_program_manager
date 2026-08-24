@@ -22,8 +22,8 @@ If that does not happen, `@AGENTS.md` and continue.
 | `.cursor/rules/` | Always-on identity and ticket health |
 | `.cursor/skills/` | Ticket, roadmap, sprint playbooks |
 | `programs/` | One folder per program |
-| `shared/org.md` | Who is assignable |
-| `shared/contractors.md` | Contractor pool |
+| `shared/org.md` | Roster: assignable vs stakeholder; contractors = Employment type from `DIM_WORKERS` |
+| `shared/roadmap-source.md` | Live DnA roadmap (Google Sheet ID + H2 tab) |
 | `templates/` | Ticket / sprint / roadmap skeletons |
 
 ## Publish

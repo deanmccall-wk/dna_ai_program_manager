@@ -58,7 +58,7 @@ Short. Must include:
    - Which program? (required if more than one program exists in `programs/_index.md`)
    - What are we working on today? (roadmap, tickets, sprint planning, a specific initiative)
    - Is this tied to an existing roadmap initiative on that program, or does mapping need to be established?
-3. Pointers: `docs/operating-model.md`, `shared/org.md`, `shared/contractors.md`, `programs/_index.md`.
+3. Pointers: `docs/operating-model.md`, `shared/org.md`, `programs/_index.md`.
 4. Behavioral constraints (one line each): be direct; think in tradeoffs; tickets must be self-contained regardless of assignee type; every ticket traces to a roadmap initiative; do not guess velocity/capacity/dependencies — ask; escalate only what needs Sr Director visibility; brevity by default.
 
 ### `.cursor/rules/virtual-pm.mdc`
@@ -91,7 +91,7 @@ Each skill must:
 
 1. Require a `program` slug. If missing or ambiguous, ask. Do not guess.
 2. Read `docs/operating-model.md` and the relevant `programs/<slug>/` files before producing output.
-3. Read `shared/org.md` before assignment. Read `shared/contractors.md` before contractor capacity recommendations.
+3. Read `shared/org.md` before assignment and before contractor capacity recommendations. Contractors are roster rows (`Employment type: Contractor` from `DIM_WORKERS.POSITION_TYPE`), not a separate file.
 4. Use Jira/Confluence MCP to publish only when the user asks and the project/space key is known. Otherwise write local drafts.
 5. `write-ticket` must not branch on contractor vs FTE. Assignee is a field, not a ticket type.
 
@@ -108,7 +108,6 @@ docs/superpowers/specs/2026-08-23-virtual-pm-design.md
 .cursor/skills/manage-roadmap/SKILL.md
 .cursor/skills/plan-sprint/SKILL.md
 shared/org.md
-shared/contractors.md
 programs/_index.md
 programs/data-platform/
   roadmap.md
@@ -156,16 +155,17 @@ Source of people: Victoria Zhang’s Data & Analytics org (22 people). This PM s
 | Product | Jyotsna Bernet | Product counterpart. Not delivery capacity. |
 | VP | Victoria Zhang | Executive stakeholder. |
 
-`shared/org.md` stores this hierarchy with reporting lines, job profile, level, title, and a `scope` field: `assignable` | `stakeholder` | `executive`.
+`shared/org.md` stores this hierarchy with reporting lines, job profile, employment type (`DIM_WORKERS.POSITION_TYPE`), level, title, and a `scope` field: `assignable` | `stakeholder` | `executive`.
 
 ### Contractor pool
 
-- Shared across **Dean’s programs only**.
-- Current members: **Lincoln Lopes Silva** (Senior Data Engineer, reports to Dean).
-- **Out of pool:** Alexandre Cerqueira, Diego Arguello. Do not plan, assign, or forecast against them.
-- New contractors enter the pool only when Dean adds them to `shared/contractors.md`.
+- Shared across **Dean’s programs only**. Source: `shared/org.md` (complete roster). No `shared/contractors.md`.
+- Contractor flag is Employment type (`POSITION_TYPE`), not Profile.
+- Dean’s contractors: Employment type `Contractor` and scope `assignable`.
+- Not capacity: Employment type `Contractor` and scope `stakeholder` (Alexandre Cerqueira, Diego Arguello). Do not plan, assign, or forecast against them.
+- New people enter only when Dean adds them to `shared/org.md`. Refresh employment type from `DIM_WORKERS`.
 
-`shared/contractors.md` is the capacity source of truth (name, role, manager, availability, notes). Program files record **allocation**, not headcount.
+Program files record **allocation**, not headcount.
 
 Over-allocation rule: assigned hours/points across all programs must not exceed that contractor’s available capacity. If a plan would over-allocate, flag it and ask which program slips. Do not silently pull time from another program.
 
@@ -250,7 +250,7 @@ Explain what this repo is (PM operating system, not an app), how to start a sess
 2. Write short `AGENTS.md` and the two always-on rules.
 3. Write the three skills.
 4. Write templates.
-5. Write `shared/org.md` and `shared/contractors.md` from the confirmed org data.
+5. Write `shared/org.md` from the confirmed org data (contractors are Profile rows in that file).
 6. Write `programs/_index.md` and `programs/data-platform/` stubs.
 7. Rewrite `README.md`.
 
