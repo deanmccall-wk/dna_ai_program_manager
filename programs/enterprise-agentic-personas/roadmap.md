@@ -12,13 +12,14 @@ Core Semantic Context Layer is a sibling program (`core-semantic-context-layer`)
 
 ## Initiatives
 
-Named on the H2 row as the Q3 pilot architecture. Status is unknown until Dean confirms.
+All 5 active epics target Q3 delivery. 3 On Hold epics intentionally parked.
 
 | Initiative | Quarter | Status | Workstreams | Notes |
 |---|---|---|---|---|
-| Snowflake MCP | 2026 Q3 | unknown | | |
-| AI and Vector Storage Prototyping | 2026 Q3 | unknown | | Marked TBD on the H2 sheet |
-| Agentic workflow Use Case #1 | 2026 Q3 | unknown | | Marked TBD on the H2 sheet |
+| Snowflake MCP | 2026 Q3 | On Track | DNA-6008 (GOLD MCP cutover) | |
+| AI and Vector Storage Prototyping | 2026 Q3 | On Track | DNA-6011 (Vector proposal and prototype) | |
+| Agentic workflow Use Case #1 | 2026 Q3 | On Track | DNA-6009 (Agent Architecture), DNA-6012 (ECM pilot GTM) | |
+| Data Room Strategy | 2026 Q3 | On Track | New epic TBD | Derek Veroff, started 2026-08-31 |
 
 ## H2 scope (verbatim from source)
 
@@ -46,7 +47,11 @@ Targets:
 
 ## Resource notes
 
-H2 resource grid: Derek Veroff 0.5 in Q3. No Lincoln Lopes Silva allocation on this row. Capacity otherwise unknown.
+H2 resource grid: Derek Veroff 0.5 in Q3. Derek started 2026-08-31; working on Data Room strategy epic. No Lincoln Lopes Silva allocation on this row.
+
+### Status (as of 2026-08-31)
+
+On Track. All 5 active epics (DNA-6008 through DNA-6012) target Q3 delivery. All currently Open in Jira -- need transition to In Progress. 3 epics intentionally On Hold (DNA-5972, DNA-5933, DNA-5964). Derek Veroff onboarded today for Data Room strategy.
 
 ## Mapping
 

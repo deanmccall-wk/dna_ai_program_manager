@@ -1,0 +1,21 @@
+user:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: KEAZVSO-BUSINESS_TECH_PROD
+      user: dean.mccall@workiva.com
+      role: DATA_PLATFORM_ANALYST
+      warehouse: PROD_WH
+      database: gold_dev
+      schema: data_platform
+      threads: 8
+    prod:
+      type: snowflake
+      account: KEAZVSO-BUSINESS_TECH_PROD
+      user: dean.mccall@workiva.com
+      role: DATA_PLATFORM_ANALYST
+      warehouse: PROD_WH
+      database: gold_dev
+      schema: data_platform
+      threads: 8

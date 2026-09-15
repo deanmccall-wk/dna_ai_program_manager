@@ -1,0 +1,22 @@
+name: 'dna_ai_program_manager'
+version: '1.0.0'
+config-version: 2
+
+profile: 'user'
+
+model-paths: ["models"]
+
+models:
+  dna_ai_program_manager:
+    staging:
+      +tags: ["bronze"]
+      +materialized: incremental
+      +schema: data_platform
+    intermediate:
+      +tags: ["silver"]
+      +materialized: incremental
+      +schema: data_platform
+    marts:
+      +tags: ["gold"]
+      +materialized: table
+      +schema: data_platform

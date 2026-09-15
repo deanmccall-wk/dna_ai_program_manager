@@ -10,15 +10,19 @@ Do not add initiatives beyond what Dean names or what this source row already li
 
 Sibling program `enterprise-agentic-personas` still owns ECM/C360 semantic views for the Q3 AI pilot. That target is not this method.
 
+## Q3 owner
+
+Venkateswarlu Kaipu (assignable). Capacity unknown. H2 sheet still shows Derek Veroff 0.05 — does not match this assignment.
+
 ## Initiatives
 
 Named on the H2 row as Q3 method scope. Status is unknown until Dean confirms.
 
 | Initiative | Quarter | Status | Workstreams | Notes |
 |---|---|---|---|---|
-| Catalog Integration Setup | 2026 Q3 | unknown | | Sheet: Provision Snowflake Iceberg Catalog Integration |
-| Granular RBAC Architecture | 2026 Q3 | unknown | | Sheet: Establish dedicated database roles |
-| Strategy to increase coverage for additional Atlan connectors | 2026 Q3 | unknown | | Sheet spelling: `addtional` |
+| Catalog Integration Setup | 2026 Q3 | unknown | Atlan metadata → Snowflake Iceberg catalog | Sheet: Provision Snowflake Iceberg Catalog Integration. DNA-4863 (Closed) was Atlan↔Snowflake catalog pull — verify it is not this Iceberg catalog. |
+| Granular RBAC Architecture | 2026 Q3 | unknown | Lakehouse DB + roles | Sheet: Establish dedicated database roles. Open: DNA-4864. |
+| Strategy to increase coverage for additional Atlan connectors | 2026 Q3 | unknown | Ingestion epic; Salesforce connect-and-pilot first | Sheet spelling: `addtional`. Sequence: Salesforce, S3, Glue, Athena, Fivetran, Iceberg. Q3 Must: Salesforce connect-and-pilot. Later connectors are child stories, started after Salesforce. DNA-4865 parked. |
 
 ## H2 scope (verbatim from source)
 
@@ -43,12 +47,22 @@ Targets:
 
 ## Resource notes
 
-H2 resource grid: Derek Veroff 0.05. No Lincoln Lopes Silva allocation on this row. Capacity otherwise unknown.
+Q3 delivery: Assigned to Critical River. Venkateswarlu Kaipu has churned. Critical River has been responsive but contractor churn frequency should be watched.
 
-Derek Veroff is on the H2 sheet and is not in `shared/org.md`. Do not assign until Dean adds him to the roster or names an assignable owner.
+H2 resource grid still shows Derek Veroff 0.05. Derek is now on enterprise-agentic-personas (Data Room strategy).
+
+### Status (as of 2026-08-31)
+
+On Track, with risks.
+
+### Risks
+
+1. **Salesforce connector credentials:** Were created previously but need to be resurrected. DNA-6021 and downstream connector tickets remain blocked until credentials are restored.
+2. **Atlan asset capacity:** Contract is constrained to 2 million assets. Current connector plan would add back ~673,432 assets. Unknown how many total assets the new connectors will create -- need to validate headroom before activating all connectors.
+3. **Contractor churn:** Venkateswarlu Kaipu (Critical River) has already churned. Critical River replaced quickly but frequency is a pattern to watch.
 
 ## Mapping
 
-Tickets in `tickets/` must name an initiative from the table above.
+Jira Initiative: [DNA-6019](https://jira.atl.workiva.net/browse/DNA-6019) — partly makes up [DNA-44](https://jira.atl.workiva.net/browse/DNA-44). H2 sheet cell `BA33`.
 
-No H2 Jira initiative key is on the sheet row. Do not invent one.
+Tickets in `tickets/` must name an initiative from the table above.

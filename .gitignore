@@ -216,3 +216,14 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local data snapshots (sourced from Google Sheets)
+shared/data/
+
+# Google OAuth credentials
+.google-mcp/
+credentials.json
+token.json
+
+# Cortex Code / CoCo Desktop
+.snowflake/

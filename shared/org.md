@@ -43,6 +43,7 @@ Employment type is `GOLD_PROD.MARTS.DIM_WORKERS.POSITION_TYPE` (latest row). Use
 | Isabel Pietri | Data Analytics | Regular | P3 | Senior Analytics Engineer | Matt Kelley | assignable |
 | Maxwell Meiser | Data Analytics | Regular | P2 | Data Analytics Engineer | Matt Kelley | assignable |
 | Stephanie Holzschuh | Data Engineering | Regular | P3 | Senior Data Engineer | Matt Kelley | assignable |
+| Abel Garcia | Contractor | Contractor | -- | Analytics Engineering Contractor | Matt Kelley | assignable |
 
 #### Jyotsna Bernet — Lead Data Product Manager — Product Management P5 — Regular — `stakeholder`
 
