@@ -115,7 +115,7 @@ def _preflight_checks() -> None:
         raise SystemExit(msg)
 
 
-def run_pipeline(target: str, include_lineage: bool = False) -> None:
+def run_pipeline(target: str, include_lineage: bool = False, full_refresh: bool = False, lineage_limit: int | None = None, test_tables: list[str] | None = None) -> None:
     from prefect import flow
 
     from pipelines.tasks.dbt_run import dbt_run_layer
@@ -123,6 +123,9 @@ def run_pipeline(target: str, include_lineage: bool = False) -> None:
         extract_redshift_objects,
         extract_redshift_scans,
     )
+
+    if include_lineage:
+        from pipelines.tasks.extract_atlan_lineage import extract_atlan_lineage
 
     _preflight_checks()
 
@@ -158,22 +161,21 @@ def run_pipeline(target: str, include_lineage: bool = False) -> None:
 
         total_extracted = sum(results.values())
 
-        # --- dbt layers ---
+        # --- Optional: Atlan lineage extract (before dbt so raw table exists) ---
+        if include_lineage:
+            print("\n--- Atlan Lineage Extract ---")
+            lineage_loaded = extract_atlan_lineage(limit=lineage_limit, test_tables=test_tables)
+            print(f"  Loaded {lineage_loaded} lineage edges")
+
+        # --- dbt layers (sequential: each layer completes before the next starts) ---
         print("\n--- Bronze Layer (staging / dedup) ---")
-        dbt_run_layer.with_options(name="bronze_layer")(layer_tag="bronze", target=target)
+        dbt_run_layer.with_options(name="bronze_layer")(layer_tag="bronze", target=target, full_refresh=full_refresh)
 
         print("\n--- Silver Layer (classification) ---")
-        dbt_run_layer.with_options(name="silver_layer")(layer_tag="silver", target=target)
+        dbt_run_layer.with_options(name="silver_layer")(layer_tag="silver", target=target, full_refresh=full_refresh)
 
-        print("\n--- Gold Layer (orphan inventory) ---")
-        dbt_run_layer.with_options(name="gold_layer")(layer_tag="gold", target=target)
-
-        # --- Optional: Atlan lineage ---
-        if include_lineage:
-            print("\n--- Atlan Lineage (for active objects) ---")
-            print("  [STUB] Atlan lineage extraction not yet implemented")
-            # TODO: extract_atlan_lineage(active_objects)
-            # Re-run dbt to process lineage data
+        print("\n--- Gold Layer (orphan inventory + dependency graph) ---")
+        dbt_run_layer.with_options(name="gold_layer")(layer_tag="gold", target=target, full_refresh=full_refresh)
 
         print(f"\n=== Pipeline Complete ===")
         print(f"  Extracted: {total_extracted} rows from {len(results)} sources")
@@ -185,10 +187,13 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Redshift scan inventory pipeline")
     parser.add_argument("--target", default="dev", choices=["dev", "prod"])
     parser.add_argument("--include-lineage", action="store_true", help="Also extract Atlan lineage for active objects")
+    parser.add_argument("--test-table", action="append", default=None, help="Specific schema.name to extract lineage for (repeatable)")
+    parser.add_argument("--lineage-limit", type=int, default=None, help="Limit lineage extraction to N tables (for demo)")
+    parser.add_argument("--full-refresh", action="store_true", help="Full refresh all dbt models (rebuild incremental)")
     args = parser.parse_args()
 
     ensure_prefect_server()
-    run_pipeline(args.target, args.include_lineage)
+    run_pipeline(args.target, args.include_lineage, args.full_refresh, args.lineage_limit, args.test_table)
 
 
 if __name__ == "__main__":

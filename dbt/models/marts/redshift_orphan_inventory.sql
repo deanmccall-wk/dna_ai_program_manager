@@ -12,6 +12,8 @@ SELECT
     schema_name,
     object_name,
     object_type,
+    ANY_VALUE(load_mechanism) AS load_mechanism,
+    BOOLOR_AGG(is_landing_table) AS is_landing_table,
     SUM(CASE WHEN user_category = 'consumer' THEN distinct_queries ELSE 0 END) AS consumer_queries,
     COUNT(DISTINCT CASE WHEN user_category = 'consumer' THEN username END) AS consumer_users,
     SUM(CASE WHEN user_category IN ('mv_refresh_spectrum', 'mv_refresh_local') THEN compute_seconds ELSE 0 END) AS refresh_compute_seconds,

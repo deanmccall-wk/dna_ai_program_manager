@@ -9,6 +9,8 @@ sources:
         description: "Raw stl_scan aggregation from Redshift. Appended daily, may contain duplicates."
       - name: raw_redshift_objects
         description: "Raw Redshift object inventory (tables, MVs, views). Full replace each extract."
+      - name: raw_atlan_lineage
+        description: "Raw Atlan lineage edges. Flattened from lineage API, enriched with attributes."
 
   - name: marts
     database: gold_prod

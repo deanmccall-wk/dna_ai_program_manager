@@ -35,6 +35,8 @@ SELECT
     COALESCE(i.schema_name, 'unknown') AS schema_name,
     COALESCE(i.object_name, s.perm_table_name) AS object_name,
     COALESCE(i.object_type, 'unknown') AS object_type,
+    COALESCE(i.load_mechanism, 'unknown') AS load_mechanism,
+    COALESCE(i.is_landing_table, FALSE) AS is_landing_table,
     s.username,
     s.distinct_queries,
     s.total_scans,

@@ -28,8 +28,10 @@ def _get_connection() -> snowflake.connector.SnowflakeConnection:
 
 
 @task(retries=1, retry_delay_seconds=30, log_prints=True)
-def dbt_run_layer(layer_tag: str, target: str = "dev") -> None:
+def dbt_run_layer(layer_tag: str, target: str = "dev", full_refresh: bool = False) -> None:
     dbt_args = f"build --select tag:{layer_tag} --target {target}"
+    if full_refresh:
+        dbt_args += " --full-refresh"
     sql = f"EXECUTE DBT PROJECT {DBT_PROJECT} ARGS = '{dbt_args}'"
 
     print(f"[dbt] Running {layer_tag} layer: {sql}")
